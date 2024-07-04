@@ -8,11 +8,13 @@
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
+  <div class=" max-w-3xl mx-auto mt-6">
     <nav>
-        <a href={{route('home')}}>Home</a>
-        <a href="{{route("movies.show", {slug: "minions"})}}">Minions</a>
-        <a href="{{route("movies.show", {slug: "theBoys"})}}">The boys</a>
+        <a class="text-blue-500 underline" href={{route('home')}}>Home</a>
+        <a class="text-blue-500 underline" href="{{route("movies.show", {slug: "minions"})}}">Minions</a>
+        <a class="text-blue-500 underline" href="{{route("movies.show", {slug: "theBoys"})}}">The boys</a>
       </nav>
   <h1>{{{movie}}}</h1>
+</div>
 </body>
 </html>
