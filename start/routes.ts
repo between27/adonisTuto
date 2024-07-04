@@ -9,9 +9,10 @@
 
 import router from '@adonisjs/core/services/router'
 
-router.on('/').render('pages/home')
+router.on('/').render('pages/home').as('home')
 
-router.get('/movie', async (ctx) => {
-  ctx.view.share({ movie: 'Minions' })
-  return ctx.view.render('pages/movies')
-})
+router
+  .get('/movies', async (ctx) => {
+    return ctx.view.render('pages/movies', { movie: 'Minions' })
+  })
+  .as('movies.index')
