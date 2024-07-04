@@ -6,13 +6,22 @@
 | The routes file is used for defining the HTTP routes.
 |
 */
-
+import app from '@adonisjs/core/services/app'
 import router from '@adonisjs/core/services/router'
+import fs from 'node:fs/promises'
 
 router.on('/').render('pages/home').as('home')
 
-router
+/* router
   .get('/movies', async (ctx) => {
-    return ctx.view.render('pages/movies', { movie: 'Minions' })
+    return ctx.view.render('pages/movies')
   })
-  .as('movies.index')
+  .as('movies.index') */
+
+router
+  .get('/movies/:slug', async (ctx) => {
+    const url = app.makeURL(`resources/movies/${ctx.params.slug}.html`)
+    const movie = await fs.readFile(url, 'utf-8')
+    return ctx.view.render('pages/movies/show', { movie })
+  })
+  .as('movies.show')
