@@ -25,7 +25,6 @@ export default class Movie {
 
   static async find(slug: string) {
     if (cache.has(slug)) {
-      console.log(`Cache Hit: ${slug}`)
       return cache.get(slug)
     }
 
