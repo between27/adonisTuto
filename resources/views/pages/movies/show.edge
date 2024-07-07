@@ -9,7 +9,8 @@
 </head>
 <body>
   <div class=" max-w-3xl mx-auto mt-6">
-  @include('partials/nav')
+    @include('partials/nav')
+    <h1 class="text-4xl">{{movie.title}}</h1>
   <h1>{{{movie.abstract}}}</h1>
   {{inspect(movie)}}
 </div>
