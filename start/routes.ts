@@ -19,4 +19,4 @@ router
   .where('slug', router.matchers.slug())
 
 router.delete('redis/:slug', [RedisController, 'destroy']).as('redis.destroy')
-router.delete('redis/flush', [RedisController, 'flush']).as('redis.flush')
+router.post('redis/flush', [RedisController, 'flush']).as('redis.flush')
