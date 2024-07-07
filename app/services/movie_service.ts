@@ -23,7 +23,6 @@ export default class MovieService {
       const md = new MarkdownFile(file)
 
       await md.process()
-
       return md
     } catch (error) {
       throw new Exception(`Could not find ${slug}`)

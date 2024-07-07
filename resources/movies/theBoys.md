@@ -1,4 +1,3 @@
-
 ---
 title: The boys
 summary: Lorem ipsum dolor sit amet consectetur adipisicing
