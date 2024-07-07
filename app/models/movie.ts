@@ -1,11 +1,14 @@
+import cache from '#services/cache_service'
 import MovieService from '#services/movie_service'
-import { BaseModel } from '@adonisjs/lucid/orm'
 import { toHtml } from '@dimerapp/markdown/utils'
 
-export default class Movie extends BaseModel {
+export default class Movie {
   declare title: string
+
   declare slug: string
+
   declare summary: string
+
   declare abstract?: string
 
   static async all() {
@@ -21,12 +24,20 @@ export default class Movie extends BaseModel {
   }
 
   static async find(slug: string) {
+    if (cache.has(slug)) {
+      console.log(`Cache Hit: ${slug}`)
+      return cache.get(slug)
+    }
+
     const md = await MovieService.read(slug)
     const movie = new Movie()
+
     movie.title = md.frontmatter.title
-    movie.abstract = toHtml(md).contents
-    movie.slug = slug
     movie.summary = md.frontmatter.summary
+    movie.slug = slug
+    movie.abstract = toHtml(md).contents
+
+    cache.set(slug, movie)
 
     return movie
   }
