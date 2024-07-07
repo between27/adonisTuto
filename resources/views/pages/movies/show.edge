@@ -9,12 +9,9 @@
 </head>
 <body>
   <div class=" max-w-3xl mx-auto mt-6">
-    <nav>
-        <a class="text-blue-500 underline" href={{route('home')}}>Home</a>
-        <a class="text-blue-500 underline" href="{{route("movies.show", {slug: "minions"})}}">Minions</a>
-        <a class="text-blue-500 underline" href="{{route("movies.show", {slug: "theBoys"})}}">The boys</a>
-      </nav>
+  @include('partials/nav')
   <h1>{{{movie.abstract}}}</h1>
+  {{inspect(movie)}}
 </div>
 </body>
 </html>
