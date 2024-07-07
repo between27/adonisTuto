@@ -14,9 +14,12 @@ dependencies:
   '@adonisjs/lucid':
     specifier: ^21.1.0
     version: 21.1.0(@adonisjs/assembler@7.7.0)(@adonisjs/core@6.12.1)(luxon@3.4.4)(pg@8.12.0)
+  '@adonisjs/redis':
+    specifier: ^9.1.0
+    version: 9.1.0(@adonisjs/core@6.12.1)
   '@adonisjs/session':
     specifier: ^7.4.2
-    version: 7.4.2(@adonisjs/core@6.12.1)(edge.js@6.0.2)
+    version: 7.4.2(@adonisjs/core@6.12.1)(@adonisjs/redis@9.1.0)(edge.js@6.0.2)
   '@adonisjs/shield':
     specifier: ^8.1.1
     version: 8.1.1(@adonisjs/core@6.12.1)(@adonisjs/session@7.4.2)(edge.js@6.0.2)
@@ -191,7 +194,7 @@ packages:
       '@adonisjs/core': 6.12.1(@adonisjs/assembler@7.7.0)(@vinejs/vine@2.1.0)(edge.js@6.0.2)
       '@adonisjs/lucid': 21.1.0(@adonisjs/assembler@7.7.0)(@adonisjs/core@6.12.1)(luxon@3.4.4)(pg@8.12.0)
       '@adonisjs/presets': 2.6.1(@adonisjs/assembler@7.7.0)(@adonisjs/core@6.12.1)
-      '@adonisjs/session': 7.4.2(@adonisjs/core@6.12.1)(edge.js@6.0.2)
+      '@adonisjs/session': 7.4.2(@adonisjs/core@6.12.1)(@adonisjs/redis@9.1.0)(edge.js@6.0.2)
       '@japa/plugin-adonisjs': 3.0.1(@adonisjs/core@6.12.1)(@japa/runner@3.1.4)
       basic-auth: 2.0.1
     transitivePeerDependencies:
@@ -466,6 +469,20 @@ packages:
     resolution: {integrity: sha512-StwX1dGsf8Yt5Vz48evSDGKMS5iOEgMHUYcDhkQJ79NUXopJ5PiAqb/GbjvA+XmEa+aZNPHqmafgFbfKlLAFZA==}
     dev: true
 
+  /@adonisjs/redis@9.1.0(@adonisjs/core@6.12.1):
+    resolution: {integrity: sha512-cesml/1Libmwm2yjmbbp2xtyGp+LBNkqCe9ehSmPFM+5puRRbJkqNf6ZaHFQfKdjQU1Y7qR9xtyf5uHLU/K0uw==}
+    engines: {node: '>=18.16.0'}
+    peerDependencies:
+      '@adonisjs/core': ^6.2.0
+    dependencies:
+      '@adonisjs/core': 6.12.1(@adonisjs/assembler@7.7.0)(@vinejs/vine@2.1.0)(edge.js@6.0.2)
+      '@poppinss/utils': 6.7.3
+      emittery: 1.0.3
+      ioredis: 5.4.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /@adonisjs/repl@4.0.1:
     resolution: {integrity: sha512-fgDRC5I8RBKHzsJPM4rRQF/OWI0K9cNihCIf4yHdqQt3mhFqWSOUjSi4sXWykdICLiddmyBO86au7i0d0dj5vQ==}
     engines: {node: '>=18.16.0'}
@@ -473,7 +490,7 @@ packages:
       '@poppinss/colors': 4.1.3
       string-width: 7.2.0
 
-  /@adonisjs/session@7.4.2(@adonisjs/core@6.12.1)(edge.js@6.0.2):
+  /@adonisjs/session@7.4.2(@adonisjs/core@6.12.1)(@adonisjs/redis@9.1.0)(edge.js@6.0.2):
     resolution: {integrity: sha512-Obw0mlPYroEtiZ9zobGq+J4cTQ/iQXhuUCbYRiwpLylA5+OMTNQJW5PEKRozDSGt7skUK72zJLNJTDQDihPLjA==}
     engines: {node: '>=18.16.0'}
     peerDependencies:
@@ -493,6 +510,7 @@ packages:
         optional: true
     dependencies:
       '@adonisjs/core': 6.12.1(@adonisjs/assembler@7.7.0)(@vinejs/vine@2.1.0)(edge.js@6.0.2)
+      '@adonisjs/redis': 9.1.0(@adonisjs/core@6.12.1)
       '@poppinss/macroable': 1.0.2
       '@poppinss/utils': 6.7.3
       edge.js: 6.0.2
@@ -516,7 +534,7 @@ packages:
         optional: true
     dependencies:
       '@adonisjs/core': 6.12.1(@adonisjs/assembler@7.7.0)(@vinejs/vine@2.1.0)(edge.js@6.0.2)
-      '@adonisjs/session': 7.4.2(@adonisjs/core@6.12.1)(edge.js@6.0.2)
+      '@adonisjs/session': 7.4.2(@adonisjs/core@6.12.1)(@adonisjs/redis@9.1.0)(edge.js@6.0.2)
       '@poppinss/utils': 6.7.3
       csrf: 3.1.0
       edge.js: 6.0.2
@@ -920,6 +938,10 @@ packages:
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     deprecated: Use @eslint/object-schema instead
     dev: true
+
+  /@ioredis/commands@1.2.0:
+    resolution: {integrity: sha512-Sx1pU8EM64o2BrqNpEO1CNLtKQwyhuXuqyfH7oGKCk+1a33d2r5saW8zNwm3j6BTExtjrv2BxTgzzkMwts6vGg==}
+    dev: false
 
   /@isaacs/cliui@8.0.2:
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -2234,6 +2256,11 @@ packages:
     engines: {node: '>=0.8'}
     dev: true
 
+  /cluster-key-slot@1.1.2:
+    resolution: {integrity: sha512-RMr0FhtfXemyinomL4hrWcYJxmX6deFdCxpJzhDttxgO1+bcCnkk+9drydLVDmAMG7NE6aN/fl4F7ucU/90gAA==}
+    engines: {node: '>=0.10.0'}
+    dev: false
+
   /code-block-writer@13.0.1:
     resolution: {integrity: sha512-c5or4P6erEA69TxaxTNcHUNcIn+oyxSRTOWV+pSYF+z4epXqNvwvJ70XPGjPNgue83oAFAPBRQYwpAJ/Hpe/Sg==}
 
@@ -2491,6 +2518,11 @@ packages:
       has-property-descriptors: 1.0.2
       object-keys: 1.1.1
     dev: true
+
+  /denque@2.1.0:
+    resolution: {integrity: sha512-HVQE3AAb/pxF8fQAoiqpvg9i3evqug3hoiwakOyZAwJm+6vZehbkYXZ0l4JxS+I3QxM97v5aaRNhj8v5oBhekw==}
+    engines: {node: '>=0.10'}
+    dev: false
 
   /depd@2.0.0:
     resolution: {integrity: sha512-g7nH6P6dyDioJogAAGprGpCtVImJhpPk/roCzdb3fIh61/s/nPsfR6onyMwkCAR/OlC3yBC0lESvUoQEAssIrw==}
@@ -3584,6 +3616,23 @@ packages:
     engines: {node: '>= 0.10'}
     dev: false
 
+  /ioredis@5.4.1:
+    resolution: {integrity: sha512-2YZsvl7jopIa1gaePkeMtd9rAcSjOOjPtpcLlOeusyO+XH2SK5ZcT+UCrElPP+WVIInh2TzeI4XW9ENaSLVVHA==}
+    engines: {node: '>=12.22.0'}
+    dependencies:
+      '@ioredis/commands': 1.2.0
+      cluster-key-slot: 1.1.2
+      debug: 4.3.5
+      denque: 2.1.0
+      lodash.defaults: 4.2.0
+      lodash.isarguments: 3.1.0
+      redis-errors: 1.2.0
+      redis-parser: 3.0.0
+      standard-as-callback: 2.1.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /ipaddr.js@1.9.1:
     resolution: {integrity: sha512-0KI/607xoxSToH7GjN1FfSbLoU0+btTicjsQSWQlh/hZykN8KpmMf7uYwPW3R+akZ6R/w18ZlXSHBYXiYUPO3g==}
     engines: {node: '>= 0.10'}
@@ -4078,6 +4127,10 @@ packages:
     dependencies:
       p-locate: 6.0.0
 
+  /lodash.defaults@4.2.0:
+    resolution: {integrity: sha512-qjxPLHd3r5DnsdGacqOMU6pb/avJzdh9tFX2ymgoZE27BmjXrNy/y4LoaiTeAb+O3gL8AfpJGtqfX/ae2leYYQ==}
+    dev: false
+
   /lodash.flatten@4.4.0:
     resolution: {integrity: sha512-C5N2Z3DgnnKr0LOpv/hKCgKdb7ZZwafIrsesve6lmzvZIRZRGaZ/l6Q8+2W7NaT+ZwO3fFlSCzCzrDCFdJfZ4g==}
     dev: true
@@ -4085,6 +4138,10 @@ packages:
   /lodash.get@4.4.2:
     resolution: {integrity: sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ==}
     dev: true
+
+  /lodash.isarguments@3.1.0:
+    resolution: {integrity: sha512-chi4NHZlZqZD18a0imDHnZPrDeBbTtVN7GXMwuGdRH9qotxAjYs3aVLKc7zNOG9eddR5Ksd8rvFEBc9SsggPpg==}
+    dev: false
 
   /lodash.isequal@4.5.0:
     resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
@@ -5448,6 +5505,18 @@ packages:
       resolve: 1.22.8
     dev: false
 
+  /redis-errors@1.2.0:
+    resolution: {integrity: sha512-1qny3OExCf0UvUV/5wpYKf2YwPcOqXzkwKKSmKHiE6ZMQs5heeE/c8eXK+PNllPvmjgAbfnsbpkGZWy8cBpn9w==}
+    engines: {node: '>=4'}
+    dev: false
+
+  /redis-parser@3.0.0:
+    resolution: {integrity: sha512-DJnGAeenTdpMEH6uAJRK/uiyEIH9WVsUmoLwzudwGJUwZPp80PDBWPHXSAGNPwNvIXAbe7MSUB1zQFugFml66A==}
+    engines: {node: '>=4'}
+    dependencies:
+      redis-errors: 1.2.0
+    dev: false
+
   /reflect-metadata@0.2.2:
     resolution: {integrity: sha512-urBwgfrvVP/eAyXx4hluJivBKzuEbSQs9rKWCrCkbSxNv8mxPcUZKeuoF3Uy4mJl3Lwprp6yy5/39VWigZ4K6Q==}
     dev: false
@@ -5894,6 +5963,10 @@ packages:
     dependencies:
       as-table: 1.0.55
       get-source: 2.0.12
+
+  /standard-as-callback@2.1.0:
+    resolution: {integrity: sha512-qoRRSyROncaz1z0mvYqIE4lCd9p2R90i6GxW3uZv5ucSu8tU7B5HXUP1gG8pVZsYNVaXjk8ClXHPttLyxAL48A==}
+    dev: false
 
   /statuses@2.0.1:
     resolution: {integrity: sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==}
