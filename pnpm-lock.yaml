@@ -32,9 +32,15 @@ dependencies:
   '@dimerapp/markdown':
     specifier: ^8.0.1
     version: 8.0.1
+  '@iconify-json/ph':
+    specifier: ^1.1.13
+    version: 1.1.13
   '@vinejs/vine':
     specifier: ^2.1.0
     version: 2.1.0
+  edge-iconify:
+    specifier: ^2.0.1
+    version: 2.0.1(edge.js@6.0.2)
   edge.js:
     specifier: ^6.0.2
     version: 6.0.2
@@ -938,6 +944,23 @@ packages:
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     deprecated: Use @eslint/object-schema instead
     dev: true
+
+  /@iconify-json/ph@1.1.13:
+    resolution: {integrity: sha512-xtM4JJ63HCKj09WRqrBswXiHrpliBlqboWSZH8odcmqYXbvIFceU9/Til4V+MQr6+MoUC+KB72cxhky2+A6r/g==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: false
+
+  /@iconify/iconify@3.1.1:
+    resolution: {integrity: sha512-1nemfyD/OJzh9ALepH7YfuuP8BdEB24Skhd8DXWh0hzcOxImbb1ZizSZkpCzAwSZSGcJFmscIBaBQu+yLyWaxQ==}
+    deprecated: no longer maintained, switch to modern iconify-icon web component
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: false
+
+  /@iconify/types@2.0.0:
+    resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
+    dev: false
 
   /@ioredis/commands@1.2.0:
     resolution: {integrity: sha512-Sx1pU8EM64o2BrqNpEO1CNLtKQwyhuXuqyfH7oGKCk+1a33d2r5saW8zNwm3j6BTExtjrv2BxTgzzkMwts6vGg==}
@@ -2587,6 +2610,16 @@ packages:
   /edge-error@4.0.1:
     resolution: {integrity: sha512-z5mNO97k8hRVpJ6Ew1qbkMTfQ44CwuWnl+ShMCrEFgD+b324CnjBS6HbiR+Wh6Wcmw9C+/XsFBHzZ+376PpD/w==}
     engines: {node: '>=18.16.0'}
+
+  /edge-iconify@2.0.1(edge.js@6.0.2):
+    resolution: {integrity: sha512-VRWeiz4qnm/dlcGQuMd/olTTfCHHCRleW6kcy0EdXZE8hreXDx01I55f/yzYezePGsWwBuKirFVzwnrz4qMo0g==}
+    engines: {node: '>=18.16.0'}
+    peerDependencies:
+      edge.js: ^6.0.0
+    dependencies:
+      '@iconify/iconify': 3.1.1
+      edge.js: 6.0.2
+    dev: false
 
   /edge-lexer@6.0.1:
     resolution: {integrity: sha512-iYPlo+EyERGL4cICzqXIYVxMB6sSOXazpAqkqN4YcLtwR7K1i1KcwNkSy36T40BYvP7UjjjjAVnz+fk3NEWH9Q==}
