@@ -9,6 +9,12 @@ export default class Movie extends BaseModel {
   declare statusId: number
 
   @column()
+  declare writerId: number
+
+  @column()
+  declare directorId: number
+
+  @column()
   declare title: string
 
   @column()
@@ -22,6 +28,9 @@ export default class Movie extends BaseModel {
 
   @column()
   declare posterUrl: string | null
+
+  @column.dateTime()
+  declare releasedAt: DateTime | null
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

@@ -6,13 +6,8 @@ export default class extends BaseSchema {
   async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').notNullable()
-      table
-        .integer('status_id')
-        .unsigned()
-        .references('movie_statuses.id')
-        .notNullable()
-        .defaultTo(1)
-      table.integer('writer_id').unsigned().references('cineasts.id').notNullable()
+      table.integer('status_id').unsigned().references('movie_statuses.id').nullable(),
+        table.integer('writer_id').unsigned().references('cineasts.id').notNullable()
       table.integer('director_id').unsigned().references('cineasts.id').notNullable()
       table.string('title', 255).notNullable()
       table.string('slug', 255).notNullable().unique()
