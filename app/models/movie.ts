@@ -71,6 +71,11 @@ export default class Movie extends BaseModel {
       .whereRaw('lower(??) = ?', ['slug', slug])
       .orWhereRaw('lower(??) like ?', ['slug', `${slug}-%`])
 
+    if (!rows.length) {
+      movie.slug = slug
+      return
+    }
+
     const incrementors = rows.reduce<number[]>((result, row) => {
       const tokens = row.slug.toLowerCase().split(`${slug}-`)
 
