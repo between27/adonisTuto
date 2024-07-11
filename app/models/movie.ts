@@ -80,9 +80,11 @@ export default class Movie extends BaseModel {
 
       const increment = Number(tokens.at(1))
 
-      if (Number.isNaN(increment)) {
-        return result
+      if (!Number.isNaN(increment)) {
+        result.push(increment)
       }
+
+      return result
     }, [])
 
     const increment = incrementors.length ? Math.max(...incrementors) + 1 : 1
