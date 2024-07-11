@@ -12,7 +12,7 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
-    "fakeSeed": "node ace db:seed --files=database/seeders/fake_seeder"
+    "refresh:db": "node ace migration:refresh  --seed"
 
   },
   "imports": {

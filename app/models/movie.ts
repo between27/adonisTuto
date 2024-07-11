@@ -1,7 +1,10 @@
-import MovieStatuses from '#enums/movie_statuses'
 import string from '@adonisjs/core/helpers/string'
-import { BaseModel, beforeCreate, column, scope } from '@adonisjs/lucid/orm'
+import { BaseModel, beforeCreate, belongsTo, column, scope } from '@adonisjs/lucid/orm'
+import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 import { DateTime } from 'luxon'
+import MovieStatus from './movie_status.js'
+import Cineast from './cineast.js'
+import MovieStatuses from '#enums/movie_statuses'
 
 export default class Movie extends BaseModel {
   @column({ isPrimary: true })
@@ -39,6 +42,21 @@ export default class Movie extends BaseModel {
 
   @column.dateTime({ autoCreate: true })
   declare updatedAt: DateTime
+
+  @belongsTo(() => MovieStatus, {
+    foreignKey: 'statusId',
+  })
+  declare status: BelongsTo<typeof MovieStatus>
+
+  @belongsTo(() => Cineast, {
+    foreignKey: 'directorId',
+  })
+  declare director: BelongsTo<typeof Cineast>
+
+  @belongsTo(() => Cineast, {
+    foreignKey: 'writerId',
+  })
+  declare writer: BelongsTo<typeof Cineast>
 
   static released = scope((query) => {
     query.where((group) =>

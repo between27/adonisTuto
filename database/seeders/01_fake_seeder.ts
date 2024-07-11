@@ -11,10 +11,10 @@ export default class extends BaseSeeder {
   static environment: string[] = ['development', 'testing']
   async run() {
     // Write your database queries inside the run method
-    await UserFactory.createMany(5)
     await CineastFactory.createMany(10)
+    await UserFactory.with('profile').createMany(5)
     await this.#createMovies()
-    await ProfileFactory.createMany(5)
+    /*     await ProfileFactory.createMany(5) */
   }
 
   async #createMovies() {
