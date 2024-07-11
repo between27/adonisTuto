@@ -1,6 +1,5 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import Movie from '#models/movie'
-import { scope } from '@adonisjs/lucid/orm'
 
 export default class MoviesController {
   async index({ view }: HttpContext) {

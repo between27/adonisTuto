@@ -1,5 +1,6 @@
 import MovieStatuses from '#enums/movie_statuses'
-import { BaseModel, column, scope } from '@adonisjs/lucid/orm'
+import string from '@adonisjs/core/helpers/string'
+import { BaseModel, beforeCreate, column, scope } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
 
 export default class Movie extends BaseModel {
@@ -56,4 +57,36 @@ export default class Movie extends BaseModel {
         .where('releasedAt', '>', DateTime.now().toSQL())
     )
   })
+
+  @beforeCreate()
+  static async slugify(movie: Movie) {
+    const slug = string.slug(movie.title, {
+      replacement: '-',
+      lower: true,
+      strict: true,
+    })
+
+    const rows = await Movie.query()
+      .select('slug')
+      .whereRaw('lower(??) = ?', ['slug', slug])
+      .orWhereRaw('lower(??) like ?', ['slug', `${slug}-%`])
+
+    const incrementors = rows.reduce<number[]>((result, row) => {
+      const tokens = row.slug.toLowerCase().split(`${slug}-`)
+
+      if (tokens.length < 2) {
+        return result
+      }
+
+      const increment = Number(tokens.at(1))
+
+      if (Number.isNaN(increment)) {
+        return result
+      }
+    }, [])
+
+    const increment = incrementors.length ? Math.max(...incrementors) + 1 : 1
+
+    movie.slug = `${slug}-${increment}`
+  }
 }
